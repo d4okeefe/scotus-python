@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+  <p>Enter a Fahrenheit Temp to convert to Celsius</p>
+
+  <input id="temp" />
+  <select id="type">
+    <option value="celsius">Celsius</option>
+    <option value="fahrenheit">Fahrenheit</option>
+  </select>
+
+  <button id="convert">Convert</button>
+
+  <p id="demo"></p>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    function convertTemp(type, temp) {
+      switch (type.toLowerCase()) {
+        case "celsius":
+          return convertedTemp = toCelsius(temp);
+
+        case "fahrenheit":
+          return convertedTemp = toFahrenheit(temp);
+
+        default: //Should never get here since we control value.
+          return "Unknown Temp Type!!"
+      }
+    }
+
+    function toCelsius(f) {
+      return (5 / 9) * (f - 32);
+    }
+
+    function toFahrenheit(c) {
+      return c * 9 / 5 + 32;
+    }
+    $(document).ready(function () {
+          $("#convert").on("click", function () {
+            var temp = $("#temp").val();
+            var type = $("#type").val();
+            var convertedTemp = convertTemp(type, temp);
+
+            $("#demo").text() = convertedTemp;
+          });
+  </script>
+
+</body>
+
+</html>
